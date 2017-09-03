@@ -19,8 +19,8 @@ from pyvirtualdisplay import Display
 
 def LoginWeibo(username, password):
     N = 0
-    # display = Display(visible=0, size=(1024, 768))
-    # display.start()
+    display = Display(visible=0, size=(1024, 768))
+    display.start()
     driver = webdriver.Firefox()
     wait = ui.WebDriverWait(driver, 10)
     cookies_dict = {}
@@ -59,17 +59,12 @@ def LoginWeibo(username, password):
         else:
             exit(0)
 
-    # print driver.current_url
-    # print cookies_dict  # 获得cookie信息 dict存储
-    # print u'输出Cookie键值对信息:'
     cookie = ''
     for item in cookies_dict:
-        # print cookie
         cookie = cookie + item['name'] + '=' + item['value'] + ';'
 
     print u'登陆成功...'
     driver.close()      #最后启动的Firefox，先关闭
     display.stop()      #最先启动的虚拟桌面，最后关闭
-    # return driver
     return cookie
 
